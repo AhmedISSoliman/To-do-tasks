@@ -1,0 +1,43 @@
+<div class="p-4">
+  <header class="d-flex justify-content-between align-items-center">
+    <h1 class="m-0">{{'DeleteTask'|translate}}</h1>
+    <button mat-flat-button matDialogClose class="text-danger" title="{{'Close'|translate}}">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <div mat-dialog-content *ngIf="taskDetails">
+    <div class="col-md-12">
+      <div class="col-md-12">
+        <label>{{'Title'|translate}}</label>
+        <p>{{taskDetails.title}}</p>
+      </div>
+      <div class="col-md-12">
+        <label>{{'User'|translate}}</label>
+        <p>{{taskDetails?.userId?.username}}</p>
+      </div>
+      <div class="col-md-12 mb-3 w-75 m-auto my-2">
+        <img class="w-100 h-100 rounded" [src]="imgSrc+taskDetails.image" alt="">
+      </div>
+      <div class="col-md-12">
+        <label>{{'DeadLineDate'|translate}}</label>
+        <p>{{taskDetails.deadline }}</p>
+      </div>
+      <div class="col-md-12">
+        <label>{{'Description'|translate}}</label>
+        <p>{{taskDetails.description}}</p>
+      </div>
+      <div class="col-md-12">
+        <label>{{'Status'|translate}}</label>
+        <p>{{taskDetails.status}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <button type="submit" color="primary" mat-raised-button class="py-1 px-5 mx-2"
+      (click)="deleteTask()">{{"Delete"|translate}}</button>
+    <button mat-raised-button class="py-1 px-5" color="warn" matDialogClose>{{'Close'|translate}}</button>
+
+  </div>
+
+  <!-- <footer class="tw-p-6"></footer> -->
+</div>

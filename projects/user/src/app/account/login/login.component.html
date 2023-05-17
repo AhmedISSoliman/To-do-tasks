@@ -1,0 +1,61 @@
+<div class="mainpage">
+    <div class="container login d-flex justify-content-center align-items-center m-auto mainSec">
+
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <div class="h-100 d-flex align-items-center justify-content-center w-100">
+                    <div class="box w-100 text-center">
+                        <h1 style="font-size: 3em;margin-top: 2rem; margin-bottom: 2rem;">{{'Login'|translate}} </h1>
+                        <div class="actions d-flex align-items-center justify-content-center mb-4">
+                            <a *ngIf="currentLanguage=='ar'" class="btn btn-outline-dark"
+                                style="padding: 0.2rem 1.5rem;" (click)="changeLanguage('en')">en</a>
+                            <a *ngIf="currentLanguage=='en'" class="btn btn-outline-dark"
+                                style="padding: 0.2rem 1.5rem;" (click)="changeLanguage('ar')">ع</a>
+                        </div>
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="margin-bottom: 3rem;">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>{{"Email"|translate}}</mat-label>
+                                <input matInput placeholder="{{'Email'|translate}}" formControlName="email">
+                                <mat-error
+                                    *ngIf="(loginForm.controls.email.touched||isFormSubmitted)&&loginForm.controls.email.errors&&loginForm.controls.email.errors.required">
+                                    {{'Required'|translate}}</mat-error>
+                                <mat-error
+                                    *ngIf="(loginForm.controls.email.touched||isFormSubmitted)&&loginForm.controls.email.errors&&loginForm.controls.email.errors.email">
+                                    {{'EmailNotValid'|translate}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>{{'Password'|translate}}</mat-label>
+                                <input matInput placeholder="password" formControlName="password">
+                                <mat-error
+                                    *ngIf="(loginForm.controls.password.touched||isFormSubmitted)&&loginForm.controls.password.errors&&loginForm.controls.password.errors.required">
+                                    {{'Required'|translate}}</mat-error>
+                                <mat-error
+                                    *ngIf="(loginForm.controls.password.touched||isFormSubmitted)&&loginForm.controls.password.errors&&loginForm.controls.password.errors.minlength">
+                                    {{'Password'|translate}} {{'minLength'|translate : {chars : 5 } }} </mat-error>
+                                <mat-error
+                                    *ngIf="(loginForm.controls.password.touched||isFormSubmitted)&&loginForm.controls.password.errors&&loginForm.controls.password.errors.maxlength">
+                                    {{'Password'|translate}} {{'maxLength'|translate : {chars : 20 } }}</mat-error>
+
+                            </mat-form-field>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" mat-raised-button color="warn"
+                                    class="w-100">{{'Login'|translate}}</button>
+                            </div>
+                        </form>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <ul class="logInM p-0">
+                                    <li class="d-flex" style="justify-content: space-evenly;">
+                                        {{'DoNotHaveaAccount'|translate}} <a routerLink="/register"
+                                            class="switcher-text">{{'Register'|translate}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

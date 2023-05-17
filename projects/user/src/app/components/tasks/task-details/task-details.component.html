@@ -1,0 +1,19 @@
+<div class="container mt-4" *ngIf="taskDetails">
+    <div class="imageBox">
+        <img [src]="imgSrc+taskDetails.image" alt="" class="w-50 h-50">
+    </div>
+    <div class="d-flex justify-content-between align-items-baseline my-3">
+        <h1 class="card-title ">{{taskDetails.title}}</h1>
+    </div>
+    <p class="card-subtitle mb-2 text-muted">{{"DeadLineDate" |translate}} :{{taskDetails.deadline}}</p>
+    <hr>
+    <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <p class="card-text">{{taskDetails.description}}</p>
+        <small style="font-size: 13px;">{{'CreatedDate'|translate}} :{{taskDetails.createdAt|date :'shortDate'}}</small>
+    </div>
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="completeTask(taskDetails._id)"
+            class="mx-2">{{'Complete'|translate}}</button>
+        <a mat-raised-button color="basic" routerLink="/tasks">{{'Back'|translate}}</a>
+    </div>
+</div>

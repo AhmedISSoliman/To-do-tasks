@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+// regular style toast
+@import '~ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap');
+
+.rtl{
+  @import "assets/css/style.rtl.scss";
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Cairo, sans-serif; overflow-x: hidden;}
+
+button{
+    display: flex !important;
+    justify-content: center !important;
+}
+td{
+    text-align: center !important;
+}
+.ngx-pagination .current ,.ngx-pagination{
+    border-radius: 50%;
+}
+.ngx-pagination .current{
+  background: #bc1059 !important;
+}
+.ngx-pagination a:hover, .ngx-pagination button:hover{
+        border-radius: 50%;
+}
+.pagination-next a,.pagination-previous a{
+    text-decoration: none;
+    border-radius:12px  !important;
+}
+.ngx-pagination  a{
+    text-decoration: none;
+}
+::ng-deep .mat-dialog-container {
+    padding: 0 !important;
+}
+::ng-deep pagination-controls nav {
+    background-color: transparent !important;
+}
+.mat-calendar-content{
+  height: 79% !important;
+}
+.mat-calendar-table{
+  height: 100% !important;
+}

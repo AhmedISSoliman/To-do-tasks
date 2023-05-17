@@ -1,0 +1,47 @@
+:host ::ng-deep {
+    table {
+        thead {
+            background-color: #bc1059!important;
+            .mat-header-cell {
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.w-20 {
+    width: 20%!important;
+}
+th{
+    text-align: center !important;
+    font-size: 15px;
+    // font-weight: 600;
+}
+td{
+    text-align: center !important;
+}
+.badge {
+    display: inline-block;
+    padding: .5rem;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+.badge-secondary {
+    color: #fff;
+    background-color: #6c757d;
+}
+@media (max-width:991.99px){
+
+  .listBox{
+    overflow-y: scroll;
+  }
+}

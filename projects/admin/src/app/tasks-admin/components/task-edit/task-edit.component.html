@@ -1,0 +1,104 @@
+<div class="p-4">
+    <header class="d-flex justify-content-between align-items-center">
+        <h1 class="m-0">{{'EditTask' |translate}}</h1>
+        <button mat-flat-button matDialogClose class="text-danger" title="{{'Close'|translate}}">
+            <mat-icon>close</mat-icon>
+        </button>
+    </header>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{'Title'|translate}}</mat-label>
+                    <input matInput placeholder="{{'Title'|translate}}" formControlName="title">
+                    <mat-error *ngIf="(updateForm.controls.title.touched || isFormSubmitted)&& updateForm.controls.title.errors&&
+            updateForm.controls.title.errors.required != null">
+                        {{'Title'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(updateForm.controls.title.touched || isFormSubmitted)&&updateForm.controls.title.errors&&updateForm.controls.title.errors.minlength !=null">
+                        {{'Title'|translate}} {{'minLength'|translate : {chars:5 } }}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(updateForm.controls.title.touched||isFormSubmitted)&&updateForm.controls.title.errors&&updateForm.controls.title.errors.maxlength !=null">
+                        {{'Title'|translate}} {{'maxLength'|translate : {chars:50 } }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{'User'|translate}}</mat-label>
+                    <mat-select formControlName="userId">
+                        <mat-option *ngFor="let user of users" [value]="user?._id">
+                            {{user?.username}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="(updateForm.controls.userId.touched||isFormSubmitted)&&updateForm.controls.userId.errors&&updateForm.controls.userId.errors.required!=null">
+                        {{'User'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-12 mb-3">
+                <input type="file" name="image" id="image" #image accept="image/*" (change)="selectedFile($event)"
+                    required='required'>
+                <mat-error
+                    *ngIf="(updateForm.controls.image.touched||isFormSubmitted)&&updateForm.controls.image.errors&&updateForm.controls.image.errors.required !=null">
+                    {{'Image'|translate}} {{'Required'|translate}}
+                </mat-error>
+            </div> -->
+            <div class="col-md-12 mb-3">
+                <label for="image" class="btn btn-primary mb-2" onclick="image.value">{{"SelectImage"
+                    |translate}}</label>
+                <input class="d-none" type="file" name="image" id="image" #image accept="image/*"
+                    (change)="selectedFile($event)" required='required'>
+                <input type="text" class="form-control" [value]="updateForm.controls.image.value"
+                    placeholder="{{'Image'|translate}}">
+                <mat-error
+                    *ngIf="(updateForm.controls.image.touched||isFormSubmitted)&&updateForm.controls.image.errors&&updateForm.controls.image.errors.required !=null">
+                    {{'Image'|translate}} {{'Required'|translate}}
+                </mat-error>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{'DeadLineDate'|translate}}</mat-label>
+                    <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="deadline"
+                        placeholder="{{'DeadLineDate'|translate}}">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error
+                        *ngIf="(updateForm.controls.deadline.touched||isFormSubmitted)&&updateForm.controls.deadline.errors&&updateForm.controls.deadline.errors.required !=null">
+                        {{'DeadLineDate'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{'Description'|translate}}</mat-label>
+                    <textarea matInput placeholder="{{'Description'|translate}}"
+                        formControlName="description"></textarea>
+                    <mat-error
+                        *ngIf="(updateForm.controls.description.touched||isFormSubmitted)&&updateForm.controls.description.errors&&updateForm.controls.description.errors.required !=null">
+                        {{'Description'|translate}} {{'Required'|translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="(updateForm.controls.description.touched||isFormSubmitted)&&updateForm.controls.description.errors&&updateForm.controls.description.errors.minlength !=null">
+                        {{'Description'|translate}} {{'minLength'|translate : {chars:5 } }} </mat-error>
+                    <mat-error
+                        *ngIf="(updateForm.controls.description.touched||isFormSubmitted)&&updateForm.controls.description.errors&&updateForm.controls.description.errors.maxlength !=null">
+                        {{'Description'|translate}} {{'minLength'|translate : {chars:100 } }} </mat-error>
+                </mat-form-field>
+
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <button type="submit" [disabled]="updateForm.invalid" color="primary" mat-raised-button
+                class="py-1 px-5 mx-2">{{'Update'|translate}}</button>
+            <button mat-raised-button class="py-1 px-5" color="warn" matDialogClose>{{'Close'|translate}}</button>
+
+        </div>
+    </form>
+
+    <!-- <footer class="tw-p-6"></footer> -->
+</div>
